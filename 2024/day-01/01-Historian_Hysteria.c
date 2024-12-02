@@ -1,4 +1,4 @@
-// Advent of code 2024 Day-01
+// Advent of code 2024 Day-01 Part-01
 
 #include <stdio.h>
 #include <stdlib.h>
