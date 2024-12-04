@@ -1,4 +1,4 @@
-// Advent of code 2024 Day-02 Part-1
+// Advent of code 2024 Day-02 Part-01
 
 // Nosed Reports
 
