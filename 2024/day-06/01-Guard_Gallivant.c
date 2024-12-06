@@ -16,8 +16,8 @@ int direction;
 void turn_right(int *direction) { *direction = (*direction + 1) % 4; }
 
 // Check if the next step is an obstacle
-bool is_obstacle(char **map, int *pos, int *direction) {
-  switch (*direction) {
+bool is_obstacle(char **map, int *pos, int direction) {
+  switch (direction) {
   case UP:
     if (map[pos[0] - 1][pos[1]] == '#') {
       return true;
@@ -106,10 +106,10 @@ int main(int argc, char *argv[]) {
   free(line);
 
   // Loop until an out of bounds position (Guard left the map)
-  while (pos[0] >= 0 && pos[0] < rows - 1 && pos[1] > 0 &&
+  while (pos[0] >= 0 && pos[0] < rows - 1 && pos[1] >= 0 &&
          pos[1] <= strlen(map[pos[0]])) {
 
-    if (is_obstacle(map, &pos[0], &direction)) {
+    if (is_obstacle(map, &pos[0], direction)) {
       turn_right(&direction);
     }
 
