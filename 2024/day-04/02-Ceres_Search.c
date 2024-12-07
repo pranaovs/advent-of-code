@@ -1,4 +1,4 @@
-// Advent of code 2024 Day-04 Part-01
+// Advent of code 2024 Day-04 Part-02
 
 // Ceres Search
 
