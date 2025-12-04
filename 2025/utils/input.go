@@ -65,3 +65,21 @@ func GetFpath(args []string) (string, error) {
 
 	return args[1], nil
 }
+
+func ReadAsGrid(fpath string) ([][]rune, error) {
+	lines, err := ReadAsLines(fpath)
+	if err != nil {
+		return nil, err
+	}
+
+	if len(lines) == 0 {
+		return [][]rune{}, nil
+	}
+
+	grid := make([][]rune, len(lines))
+	for i, line := range lines {
+		grid[i] = []rune(line)
+	}
+
+	return grid, nil
+}
