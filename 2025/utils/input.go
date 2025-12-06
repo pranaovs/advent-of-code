@@ -111,3 +111,21 @@ func ReadAsGrid(fpath string) ([][]rune, error) {
 
 	return grid, nil
 }
+
+func ReadAsGridString(fpath string) ([][]string, error) {
+	lines, err := ReadAsLines(fpath)
+	if err != nil {
+		return nil, err
+	}
+
+	if len(lines) == 0 {
+		return [][]string{}, nil
+	}
+
+	grid := make([][]string, len(lines))
+	for i, line := range lines {
+		grid[i] = strings.Fields(line)
+	}
+
+	return grid, nil
+}
