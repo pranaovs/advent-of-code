@@ -37,6 +37,34 @@ func ReadAsLines(fpath string) ([]string, error) {
 	return lines, nil
 }
 
+func ReadAsLinesNL(fpath string) ([]string, error) {
+	file, err := os.Open(fpath)
+	if err != nil {
+		return nil, err
+	}
+	defer func() {
+		_ = file.Close()
+	}()
+
+	var lines []string
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		line := scanner.Text()
+
+		// Skip empty lines to prevent "index out of range" later
+		if strings.TrimSpace(line) == "\n" {
+			lines = append(lines, "")
+		}
+
+		lines = append(lines, line)
+	}
+
+	if err := scanner.Err(); err != nil {
+		return nil, err
+	}
+	return lines, nil
+}
+
 func ReadAsDelimitedLine(fpath string, delimiter rune) ([]string, error) {
 	file, err := os.Open(fpath)
 	if err != nil {
